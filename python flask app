@@ -1,0 +1,14 @@
+#!/bin/bash
+yum update -y
+yum install -y python3
+pip3 install flask
+
+echo "from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def home():
+    return 'Hello from Flask App via User Data!'
+if __name__=='__main__':
+    app.run(host='0.0.0.0')" > /home/ec2-user/app.py
+
+python3 /home/ec2-user/app.py &
